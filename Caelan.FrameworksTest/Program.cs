@@ -1,13 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity.Validation;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-using Caelan.Frameworks.BIZ.Classes;
 using Caelan.FrameworksTest.Classes;
-using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest
 {
@@ -25,17 +17,18 @@ namespace Caelan.FrameworksTest
 
 
             uow.Users.Insert(dto);
-            uow.SaveChanges();
+            Console.WriteLine(uow.SaveChanges());
 
             dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
 
             dto.Password = "test2";
 
             uow.Users.Update(dto);
-            uow.SaveChanges();
+            Console.WriteLine(uow.SaveChanges());
 
             uow.Users.Delete(dto);
-            uow.SaveChanges();
+            Console.WriteLine(uow.SaveChanges());
+            Console.ReadLine();
         }
     }
 }
