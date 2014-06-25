@@ -58,9 +58,9 @@
     <Reference Include="Caelan.DynamicLinq">
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.9.37269, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.12.754, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.9-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.12-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.Frameworks.Common, Version=2.0.9.37224, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
