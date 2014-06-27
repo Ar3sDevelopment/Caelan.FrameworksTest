@@ -13,18 +13,14 @@ namespace Caelan.FrameworksTest.Classes
 {
     public class UserRepository : BaseCRUDRepository<User, UserDTO, int>
     {
-        public UserRepository(BaseUnitOfWork manager)
+        public UserRepository(BaseUnitOfWorkManager manager)
             : base(manager)
         {
-        }
-
-        public override Func<DbContext, DbSet<User>> DbSetFunc()
-        {
-            return t =>
+            DbSetFunc = context =>
             {
-                var context = t as TestDbContext;
+                var customContext = context as TestDbContext;
 
-                return context != null ? context.Users : null;
+                return customContext != null ? customContext.Users : null;
             };
         }
 

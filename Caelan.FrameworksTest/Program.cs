@@ -7,7 +7,8 @@ namespace Caelan.FrameworksTest
     {
         static void Main(string[] args)
         {
-            var uow = new TestUnitOfWork();
+            var uowContext = new TestUnitOfWorkContext();
+            var uow = new TestUnitOfWork(uowContext);
 
             var dto = new UserDTO
             {
@@ -18,6 +19,13 @@ namespace Caelan.FrameworksTest
 
             uow.Users.Insert(dto);
             Console.WriteLine(uow.SaveChanges());
+
+            var users = uow.Users.All();
+
+            foreach (var user in users)
+            {
+                Console.WriteLine("{0}: {1}", user.ID, user.Login);
+            }
 
             dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
 

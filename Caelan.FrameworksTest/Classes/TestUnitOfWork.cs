@@ -6,24 +6,18 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using Caelan.Frameworks.BIZ.Classes;
+using Caelan.Frameworks.BIZ.Interfaces;
 using Caelan.Frameworks.DAL.Interfaces;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
 {
-    public class TestUnitOfWork : BaseUnitOfWork
+    public class TestUnitOfWork : BaseUnitOfWorkManager
     {
-        private readonly TestDbContext _context;
 
-        public override DbContext Context()
+        public TestUnitOfWork(IUnitOfWork uow)
+            : base(uow)
         {
-            return _context;
-        }
-
-        public TestUnitOfWork()
-        {
-            _context = new TestDbContext();
-
             Users = new UserRepository(this);
         }
 

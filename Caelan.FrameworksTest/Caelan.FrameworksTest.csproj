@@ -49,18 +49,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper">
-      <HintPath>..\packages\AutoMapper.3.3.0-ci1006\lib\net40\AutoMapper.dll</HintPath>
+    <Reference Include="AutoMapper, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.0-ci1007\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4">
-      <HintPath>..\packages\AutoMapper.3.3.0-ci1006\lib\net40\AutoMapper.Net4.dll</HintPath>
+    <Reference Include="AutoMapper.Net4, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\AutoMapper.3.3.0-ci1007\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.DynamicLinq">
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.14.3192, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.18.17966, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.14-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.18-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.Frameworks.Common, Version=2.0.9.37224, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -87,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\TestUnitOfWork.cs" />
+    <Compile Include="Classes\TestUnitOfWorkContext.cs" />
     <Compile Include="Classes\UserDTO.cs" />
     <Compile Include="Classes\UserRepository.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
@@ -122,7 +125,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
@@ -130,6 +132,7 @@
     </PropertyGroup>
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
+  <Import Project="..\packages\AutoMapper.3.3.0-ci1007\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0-ci1007\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
