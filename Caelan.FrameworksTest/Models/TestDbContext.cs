@@ -1,6 +1,4 @@
 using System.Data.Entity;
-using Caelan.Frameworks.DAL.Interfaces;
-using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models.Mapping;
 
 namespace Caelan.FrameworksTest.Models
@@ -22,11 +20,6 @@ namespace Caelan.FrameworksTest.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserMap());
-        }
-
-        public int Save()
-        {
-            return SaveChanges();
         }
     }
 }
