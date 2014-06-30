@@ -12,6 +12,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{063495
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Caelan.FrameworksTestFS", "Caelan.FrameworksTestFS\Caelan.FrameworksTestFS.fsproj", "{E57FC0DC-CE68-450F-AFAE-5410469557A3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,6 +24,10 @@ Global
 		{EF0FEAD3-1D4E-41CA-AA4E-2586D53CB896}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF0FEAD3-1D4E-41CA-AA4E-2586D53CB896}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF0FEAD3-1D4E-41CA-AA4E-2586D53CB896}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E57FC0DC-CE68-450F-AFAE-5410469557A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E57FC0DC-CE68-450F-AFAE-5410469557A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E57FC0DC-CE68-450F-AFAE-5410469557A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E57FC0DC-CE68-450F-AFAE-5410469557A3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
