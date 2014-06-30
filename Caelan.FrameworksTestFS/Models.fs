@@ -14,7 +14,7 @@ type User() =
     interface IEntity<int> with
         
         [<NotMapped>]
-        member this.ID
+        member this.ID 
             with get () = this.Id
             and set (value) = this.Id <- value
     
@@ -34,6 +34,11 @@ type UserMap() as this =
 
 type TestDbContext() = 
     inherit DbContext("Name=TestDbContext")
-    member val Users : DbSet<User> = null with get, set
-    static member TestDbContext() = Database.SetInitializer<TestDbContext>(null)
+    do Database.SetInitializer<TestDbContext>(null)
+    [<DefaultValue>] val mutable users : DbSet<User>
+    
+    member this.Users 
+        with get () = this.users
+        and set value = this.users <- value
+    
     override this.OnModelCreating(builder : DbModelBuilder) = builder.Configurations.Add(UserMap()) |> ignore

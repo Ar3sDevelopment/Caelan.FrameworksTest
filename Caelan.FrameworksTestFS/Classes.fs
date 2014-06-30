@@ -8,8 +8,9 @@ open Caelan.FrameworksTestsFS.Models
 
 type TestUnitOfWorkContext() = 
     let context = new TestDbContext()
+    member private this.DbContext = context
     interface IUnitOfWork with
-        member this.Context() = context :> DbContext
+        member this.Context() = this.DbContext :> DbContext
 
 [<AllowNullLiteral>]
 type UserDTO() = 
