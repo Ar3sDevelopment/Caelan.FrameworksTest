@@ -7,16 +7,15 @@ open System.Data.Entity.ModelConfiguration
 open Caelan.Frameworks.DAL.Interfaces
 
 [<AllowNullLiteral>]
-type User() = 
+type User() as self = 
     
-    [<DatabaseGenerated(DatabaseGeneratedOption.Identity)>] member val Id = 0 with get, set
-    
+    [<DatabaseGenerated(DatabaseGeneratedOption.Identity)>]
+    member val ID = 0 with get, set
+
     interface IEntity<int> with
-        
-        [<NotMapped>]
         member this.ID 
-            with get () = this.Id
-            and set (value) = this.Id <- value
+            with get () = self.ID
+            and set (value) = self.ID <- value
     
     member val Login = "" with get, set
     member val Password = "" with get, set
@@ -24,11 +23,11 @@ type User() =
 type UserMap() as this = 
     inherit EntityTypeConfiguration<User>()
     do 
-        this.HasKey(fun t -> t.Id) |> ignore
+        this.HasKey(fun t -> t.ID) |> ignore
         this.Property(fun t -> t.Login).IsRequired().HasMaxLength(new Nullable<int>(50)) |> ignore
         this.Property(fun t -> t.Password).IsRequired().HasMaxLength(new Nullable<int>(50)) |> ignore
         this.ToTable("User") |> ignore
-        this.Property(fun t -> t.Id).HasColumnName("Id") |> ignore
+        this.Property(fun t -> (t :> IEntity<int>).ID).HasColumnName("Id") |> ignore
         this.Property(fun t -> t.Login).HasColumnName("Login") |> ignore
         this.Property(fun t -> t.Password).HasColumnName("Password") |> ignore
 

@@ -16,12 +16,13 @@ type TestUnitOfWorkContext() =
 type UserDTO() = 
     member val Login = "" with get, set
     member val Password = "" with get, set
-    member val Id = 0 with get, set
+    member val ID = 0 with get, set
+
     interface IDTO<int> with
         
         member this.ID 
-            with get () = this.Id
-            and set (value) = this.Id <- value
+            with get () = this.ID
+            and set (value) = this.ID <- value
 
 type UserRepository(manager) as this = 
     inherit BaseCRUDRepository<User, UserDTO, int>(manager)
@@ -37,7 +38,7 @@ type UserRepository(manager) as this =
                 for item in this.All(fun t -> t.Login = login && t.Password = password) do
                     headOrDefault
             }
-        this.DTOBuilder().BuildFull(user)
+        this.DTOBuilder().Build(user)
 
 type TestUnitOfWork(uowContext) as this = 
     inherit BaseUnitOfWorkManager(uowContext)

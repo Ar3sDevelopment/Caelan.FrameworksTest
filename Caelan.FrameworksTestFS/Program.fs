@@ -14,7 +14,7 @@ let main argv =
     uow.SaveChanges() |> printfn "%d"
     let users = uow.Users.All()
     for user in users do
-        printfn "%d: %s" user.Id user.Login
+        printfn "%d: %s" user.ID user.Login
     dto <- uow.Users.GetUserByLogin(dto.Login, dto.Password)
     dto.Password <- "test2"
     uow.Users.Update(dto)
