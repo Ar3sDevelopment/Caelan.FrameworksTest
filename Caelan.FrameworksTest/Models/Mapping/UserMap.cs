@@ -7,7 +7,7 @@ namespace Caelan.FrameworksTest.Models.Mapping
         public UserMap()
         {
             // Primary Key
-            this.HasKey(t => t.Id);
+            this.HasKey(t => t.ID);
 
             // Properties
             this.Property(t => t.Login)
@@ -20,7 +20,7 @@ namespace Caelan.FrameworksTest.Models.Mapping
 
             // Table & Column Mappings
             this.ToTable("User");
-            this.Property(t => t.Id).HasColumnName("Id");
+            this.Property(t => t.ID).HasColumnName("Id");
             this.Property(t => t.Login).HasColumnName("Login");
             this.Property(t => t.Password).HasColumnName("Password");
         }

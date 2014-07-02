@@ -17,7 +17,7 @@ namespace Caelan.FrameworksTest
             };
 
 
-            uow.Users.InsertAsync(dto);
+            uow.Users.Insert(dto);
             Console.WriteLine(uow.SaveChanges());
 
             var users = uow.Users.All();
