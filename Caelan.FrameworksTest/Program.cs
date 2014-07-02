@@ -1,42 +1,51 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
+using AutoMapper;
 using Caelan.FrameworksTest.Classes;
 
 namespace Caelan.FrameworksTest
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            var uowContext = new TestUnitOfWorkContext();
-            var uow = new TestUnitOfWork(uowContext);
+	class Program
+	{
+		static void Main(string[] args)
+		{
+			var profileType = typeof(Profile);
+			var profiles = Assembly.GetExecutingAssembly().GetTypes().Where(t => profileType.IsAssignableFrom(t) && t.GetConstructor(Type.EmptyTypes) != null && !t.IsGenericType).Select(Activator.CreateInstance).Cast<Profile>().ToList();
 
-            var dto = new UserDTO
-            {
-                Login = "test",
-                Password = "test"
-            };
+			Mapper.Initialize(a => profiles.ForEach(a.AddProfile));
 
+			var uowContext = new TestUnitOfWorkContext();
+			var uow = new TestUnitOfWork(uowContext);
 
-            uow.Users.Insert(dto);
-            Console.WriteLine(uow.SaveChanges());
+			var dto = new UserDTO
+			{
+				Login = "test",
+				Password = "test"
+			};
 
-            var users = uow.Users.All();
+			Console.WriteLine(uow.Users.DTOBuilder().GetType().Name);
 
-            foreach (var user in users)
-            {
-                Console.WriteLine("{0}: {1}", user.ID, user.Login);
-            }
+			uow.Users.Insert(dto);
+			Console.WriteLine(uow.SaveChanges());
 
-            dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
+			var users = uow.Users.All();
 
-            dto.Password = "test2";
+			foreach (var user in users)
+			{
+				Console.WriteLine("{0}: {1}", user.ID, user.Login);
+			}
 
-            uow.Users.Update(dto);
-            Console.WriteLine(uow.SaveChanges());
+			dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
 
-            uow.Users.Delete(dto);
-            Console.WriteLine(uow.SaveChanges());
-            Console.ReadLine();
-        }
-    }
+			dto.Password = "test2";
+
+			uow.Users.Update(dto);
+			Console.WriteLine(uow.SaveChanges());
+
+			uow.Users.Delete(dto);
+			Console.WriteLine(uow.SaveChanges());
+			Console.ReadLine();
+		}
+	}
 }
