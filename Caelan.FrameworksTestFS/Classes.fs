@@ -17,7 +17,7 @@ type UserDTO() =
     member val Login = "" with get, set
     member val Password = "" with get, set
     member val ID = 0 with get, set
-
+    member val Roles = "" with get, set
     interface IDTO<int> with
         
         member this.ID 
@@ -39,6 +39,9 @@ type UserRepository(manager) as this =
                     headOrDefault
             }
         this.DTOBuilder().Build(user)
+
+    member this.List() =
+        this.DTOBuilder().BuildList(this.All())
 
 type TestUnitOfWork(uowContext) as this = 
     inherit BaseUnitOfWorkManager(uowContext)
