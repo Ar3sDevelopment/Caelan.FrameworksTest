@@ -1,6 +1,13 @@
-﻿################################################################################
+################################################################################
 # This .gitignore file was automatically created by Microsoft(R) Visual Studio.
 ################################################################################
 
 /Caelan.FrameworksTest/bin/Debug
+/Caelan.FrameworksTestFS/bin/Debug
 /Caelan.FrameworksTest/obj/Debug
+/Caelan.FrameworksTestFS/obj/Debug
+/Caelan.FrameworksTest/bin/Release
+/Caelan.FrameworksTestFS/bin/Release
+/Caelan.FrameworksTest/obj/Release
+/Caelan.FrameworksTestFS/obj/Release
+/packages
