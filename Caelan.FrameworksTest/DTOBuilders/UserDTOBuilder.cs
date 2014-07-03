@@ -1,5 +1,4 @@
-﻿using System;
-using Caelan.Frameworks.BIZ.Classes;
+﻿using Caelan.Frameworks.BIZ.Classes;
 using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models;
 using Microsoft.FSharp.Core;
@@ -12,14 +11,7 @@ namespace Caelan.FrameworksTest.DTOBuilders
 		{
 			base.AfterBuild(source, destination);
 
-			Console.WriteLine("After");
-		}
-
-		public override UserDTO BuildFull(User source)
-		{
-			Console.WriteLine("Eccomi");
-
-			return base.BuildFull(source);
+			destination.Value.Roles = "Pippo";
 		}
 	}
 }

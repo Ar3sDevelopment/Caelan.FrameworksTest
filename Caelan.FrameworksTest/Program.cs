@@ -24,16 +24,15 @@ namespace Caelan.FrameworksTest
 				Password = "test"
 			};
 
-			Console.WriteLine(uow.Users.DTOBuilder().GetType().Name);
-
 			uow.Users.Insert(dto);
+			
 			Console.WriteLine(uow.SaveChanges());
 
-			var users = uow.Users.All();
+			var users = uow.Users.List();
 
 			foreach (var user in users)
 			{
-				Console.WriteLine("{0}: {1}", user.ID, user.Login);
+				Console.WriteLine("{0}: {1} [{2}]", user.ID, user.Login, user.Roles);
 			}
 
 			dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
