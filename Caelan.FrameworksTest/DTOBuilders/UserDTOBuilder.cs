@@ -5,13 +5,13 @@ using Microsoft.FSharp.Core;
 
 namespace Caelan.FrameworksTest.DTOBuilders
 {
-	public class UserDTOBuilder : BaseDTOBuilder<User, UserDTO>
-	{
-		public override void AfterBuild(User source, FSharpRef<UserDTO> destination)
-		{
-			base.AfterBuild(source, destination);
+    public class UserDTOBuilder : BaseDTOBuilder<User, UserDTO>
+    {
+        public override void BuildFull(User source, FSharpRef<UserDTO> destination)
+        {
+            base.BuildFull(source, destination);
 
-			destination.Value.Roles = "Pippo";
-		}
-	}
+            destination.Value.Roles = "Pluto";
+        }
+    }
 }

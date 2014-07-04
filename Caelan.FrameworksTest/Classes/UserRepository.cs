@@ -20,12 +20,12 @@ namespace Caelan.FrameworksTest.Classes
 
 		public UserDTO GetUserByLogin(string login, string password)
 		{
-			return DTOBuilder().Build(All(t => t.Login == login && t.Password == password).FirstOrDefault());
+			return DTOBuilder().BuildFull(All(t => t.Login == login && t.Password == password).FirstOrDefault());
 		}
 
 		internal IEnumerable<UserDTO> List()
 		{
-			return DTOBuilder().BuildList(All());
+			return DTOBuilder().BuildFullList(All());
 		}
 	}
 }
