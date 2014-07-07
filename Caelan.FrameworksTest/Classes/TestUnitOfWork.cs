@@ -1,12 +1,12 @@
 ﻿using Caelan.Frameworks.BIZ.Classes;
 using Caelan.Frameworks.BIZ.Interfaces;
+using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
 {
-	public class TestUnitOfWork : BaseUnitOfWorkManager
+	public class TestUnitOfWork : BaseUnitOfWork<TestDbContext>
 	{
-		public TestUnitOfWork(IUnitOfWork uow)
-			: base(uow)
+		public TestUnitOfWork()
 		{
 			Users = new UserRepository(this);
 			Roles = new RoleRepository(this);

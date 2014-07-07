@@ -6,12 +6,6 @@ open Caelan.Frameworks.BIZ.Interfaces
 open Caelan.Frameworks.BIZ.Classes
 open Caelan.FrameworksTestsFS.Models
 
-type TestUnitOfWorkContext() = 
-    let context = new TestDbContext()
-    member private this.DbContext = context
-    interface IUnitOfWork with
-        member this.Context() = this.DbContext :> DbContext
-
 [<AllowNullLiteral>]
 type UserDTO() = 
     member val Login = "" with get, set
@@ -65,8 +59,8 @@ type RoleRepository(manager) =
         inherit BaseCRUDRepository<Role, RoleDTO, int>(manager)
     end
 
-type TestUnitOfWork(uowContext) as this = 
-    inherit BaseUnitOfWorkManager(uowContext)
+type TestUnitOfWork() as this = 
+    inherit BaseUnitOfWork<TestDbContext>()
     member val Users = UserRepository(this) with get, set
     member val Roles = RoleRepository(this) with get, set
     member val UserRoles = UserRoleRepository(this) with get, set

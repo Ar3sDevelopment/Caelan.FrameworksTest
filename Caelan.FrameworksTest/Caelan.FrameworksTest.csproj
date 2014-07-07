@@ -61,9 +61,8 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.30.30601, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.30-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+    <Reference Include="Caelan.Frameworks.BIZ">
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.31-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.Frameworks.Common, Version=2.0.14.25936, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -92,7 +91,6 @@
   <ItemGroup>
     <Compile Include="Classes\RoleDTO.cs" />
     <Compile Include="Classes\TestUnitOfWork.cs" />
-    <Compile Include="Classes\TestUnitOfWorkContext.cs" />
     <Compile Include="Classes\UserDTO.cs" />
     <Compile Include="Classes\RoleRepository.cs" />
     <Compile Include="Classes\UserRoleRepository.cs" />

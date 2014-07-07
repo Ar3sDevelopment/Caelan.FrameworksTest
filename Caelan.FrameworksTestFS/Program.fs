@@ -6,25 +6,25 @@ open AutoMapper
 open Caelan.FrameworksTestsFS.Classes
 
 let insert dto = 
-    use uow = new TestUnitOfWork(TestUnitOfWorkContext())
+    use uow = new TestUnitOfWork()
     uow.Users.Insert(dto)
     uow.SaveChanges() |> printfn "%d"
 
 let print = 
-    use uow = new TestUnitOfWork(TestUnitOfWorkContext())
+    use uow = new TestUnitOfWork()
     uow.Users.List()
     |> List.ofSeq
     |> List.iter (fun user -> (user.ID, user.Login, user.Roles) |||> printfn "%d: %s [%s]")
 
 let update (dto : UserDTO ref) = 
-    use uow = new TestUnitOfWork(TestUnitOfWorkContext())
+    use uow = new TestUnitOfWork()
     dto := uow.Users.GetUserByLogin((!dto).Login, (!dto).Password)
     (!dto).Password <- "test2"
     uow.Users.Update(!dto)
     uow.SaveChanges() |> printfn "%d"
 
 let delete (dto : UserDTO) = 
-    use uow = new TestUnitOfWork(TestUnitOfWorkContext())
+    use uow = new TestUnitOfWork()
     dto.UserRoles
     |> List.ofSeq
     |> List.iter (fun ur -> (uow.UserRoles.Delete(ur)))
