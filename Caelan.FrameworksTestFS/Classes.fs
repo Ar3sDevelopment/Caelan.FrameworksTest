@@ -51,14 +51,9 @@ type UserRepository(manager) =
     inherit BaseCRUDRepository<User, UserDTO, int>(manager)
     
     member this.GetUserByLogin(login, password) = 
-        let user = 
-            query { 
-                for item in this.All(fun t -> t.Login = login && t.Password = password) do
-                    headOrDefault
-            }
-        this.DTOBuilder().BuildFull(user)
+        this.Single(fun t -> t.Login = login && t.Password = password)
     
-    member this.List() = this.DTOBuilder().BuildFullList(this.All())
+    override this.List() = this.DTOBuilder().BuildFullList(this.All())
 
 type UserRoleRepository(manager) = 
     class
