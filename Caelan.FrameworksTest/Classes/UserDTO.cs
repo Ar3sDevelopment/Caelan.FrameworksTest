@@ -1,4 +1,5 @@
-﻿using Caelan.Frameworks.BIZ.Interfaces;
+﻿using System.Collections.Generic;
+using Caelan.Frameworks.BIZ.Interfaces;
 
 namespace Caelan.FrameworksTest.Classes
 {
@@ -10,6 +11,6 @@ namespace Caelan.FrameworksTest.Classes
 
 		public string Password { get; set; }
 
-		public string Roles { get; set; }
+		public virtual IEnumerable<UserRoleDTO> UserRoles { get; set; }
 	}
 }

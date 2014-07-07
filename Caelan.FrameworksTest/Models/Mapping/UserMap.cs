@@ -1,3 +1,4 @@
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.ModelConfiguration;
 
 namespace Caelan.FrameworksTest.Models.Mapping

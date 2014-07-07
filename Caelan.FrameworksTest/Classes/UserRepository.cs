@@ -10,22 +10,20 @@ namespace Caelan.FrameworksTest.Classes
 		public UserRepository(BaseUnitOfWorkManager manager)
 			: base(manager)
 		{
-			DbSetFunc = context =>
-			{
-				var customContext = context as TestDbContext;
-
-				return customContext != null ? customContext.Users : null;
-			};
 		}
 
 		public UserDTO GetUserByLogin(string login, string password)
 		{
-			return DTOBuilder().BuildFull(All(t => t.Login == login && t.Password == password).FirstOrDefault());
+			var user = All(t => t.Login == login && t.Password == password).FirstOrDefault();
+
+			return DTOBuilder().BuildFull(user);
 		}
 
 		internal IEnumerable<UserDTO> List()
 		{
-			return DTOBuilder().BuildFullList(All());
+			var users = All();
+
+			return DTOBuilder().BuildFullList(users);
 		}
 	}
 }

@@ -49,29 +49,29 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AutoMapper, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+    <Reference Include="AutoMapper, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoMapper.3.3.0-ci1008\lib\net40\AutoMapper.dll</HintPath>
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.dll</HintPath>
     </Reference>
-    <Reference Include="AutoMapper.Net4, Version=3.3.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+    <Reference Include="AutoMapper.Net4, Version=3.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\AutoMapper.3.3.0-ci1008\lib\net40\AutoMapper.Net4.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\AutoMapper.3.2.1\lib\net40\AutoMapper.Net4.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.DynamicLinq">
+    <Reference Include="Caelan.DynamicLinq, Version=1.1.0.21679, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.24.21172, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.29.26008, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.24-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.29-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.Common, Version=2.0.12.20521, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.Common, Version=2.0.14.25936, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.0.12-a\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.0.14-a\lib\Caelan.Frameworks.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.DAL">
+    <Reference Include="Caelan.Frameworks.DAL, Version=2.0.5.27459, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.Frameworks.DAL.2.0.5-a\lib\Caelan.Frameworks.DAL.dll</HintPath>
-      <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -90,15 +90,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\RoleDTO.cs" />
     <Compile Include="Classes\TestUnitOfWork.cs" />
     <Compile Include="Classes\TestUnitOfWorkContext.cs" />
     <Compile Include="Classes\UserDTO.cs" />
+    <Compile Include="Classes\RoleRepository.cs" />
+    <Compile Include="Classes\UserRoleRepository.cs" />
     <Compile Include="Classes\UserRepository.cs" />
+    <Compile Include="Classes\UserRoleDTO.cs" />
     <Compile Include="DTOBuilders\UserDTOBuilder.cs" />
     <Compile Include="EntityBuilders\UserEntityBuilder.cs" />
+    <Compile Include="Models\Mapping\RoleMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
+    <Compile Include="Models\Mapping\UserRoleMap.cs" />
+    <Compile Include="Models\Role.cs" />
     <Compile Include="Models\TestDbContext.cs" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +145,7 @@
     <Error Condition="!Exists('$(SolutionDir)\.nuget\NuGet.targets')" Text="$([System.String]::Format('$(ErrorText)', '$(SolutionDir)\.nuget\NuGet.targets'))" />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.0-ci1008\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.0-ci1008\tools\AutoMapper.targets')" />
+  <Import Project="..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.2.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
