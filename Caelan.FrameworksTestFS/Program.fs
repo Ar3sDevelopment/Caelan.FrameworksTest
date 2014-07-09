@@ -3,6 +3,8 @@
 open System
 open System.Reflection
 open Caelan.Frameworks.Common.Classes
+open Caelan.Frameworks.BIZ.Classes
+open Caelan.FrameworksTestsFS.Models
 open Caelan.FrameworksTestsFS.Classes
 
 let insert dto = 
@@ -10,11 +12,11 @@ let insert dto =
     uow.Users.Insert(dto)
     uow.SaveChanges() |> printfn "%d"
 
-let print = 
+let print() = 
     use uow = new TestUnitOfWork()
     uow.Users.List()
     |> List.ofSeq
-    |> List.iter (fun user -> (user.ID, user.Login, user.Roles) |||> printfn "%d: %s [%s]")
+    |> List.iter (fun user -> (user.ID, user.Login, System.String.Join (",",user.UserRoles |> List.ofSeq |> List.map (fun t -> t.Role.Description))) |||> printfn "%d: %s [%s]")
 
 let update (dto : UserDTO ref) = 
     use uow = new TestUnitOfWork()
@@ -25,9 +27,10 @@ let update (dto : UserDTO ref) =
 
 let delete (dto : UserDTO) = 
     use uow = new TestUnitOfWork()
-    dto.UserRoles
-    |> List.ofSeq
-    |> List.iter (fun ur -> (uow.UserRoles.Delete(ur)))
+    //TODO: Fix
+    //dto.UserRoles
+    //|> List.ofSeq
+    //|> List.iter (fun ur -> GenericRepository.CreateGenericCRUDRepository<UserRole, UserRoleDTO, int>(uow).Delete(ur))
     uow.Users.Delete(dto)
     uow.SaveChanges() |> printfn "%d"
 
@@ -40,7 +43,7 @@ let main argv =
                      UserRoles = [ UserRoleDTO(IDRole = 1)
                                    UserRoleDTO(IDRole = 2) ]))
     insert !dto
-    print
+    print()
     update dto
     delete !dto
     Console.ReadLine() |> ignore

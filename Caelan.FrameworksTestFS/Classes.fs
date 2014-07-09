@@ -11,7 +11,6 @@ type UserDTO() =
     member val Login = "" with get, set
     member val Password = "" with get, set
     member val ID = 0 with get, set
-    member val Roles = "" with get, set
     member val UserRoles : seq<UserRoleDTO> = null with get, set
     interface IDTO<int> with
         
@@ -49,18 +48,6 @@ type UserRepository(manager) =
     
     override this.List() = this.DTOBuilder().BuildFullList(this.All())
 
-type UserRoleRepository(manager) = 
-    class
-        inherit BaseCRUDRepository<UserRole, UserRoleDTO, int>(manager)
-    end
-
-type RoleRepository(manager) = 
-    class
-        inherit BaseCRUDRepository<Role, RoleDTO, int>(manager)
-    end
-
 type TestUnitOfWork() as this = 
     inherit BaseUnitOfWork<TestDbContext>()
     member val Users = UserRepository(this) with get, set
-    member val Roles = RoleRepository(this) with get, set
-    member val UserRoles = UserRoleRepository(this) with get, set

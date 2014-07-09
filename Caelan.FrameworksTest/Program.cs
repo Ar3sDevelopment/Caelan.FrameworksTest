@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Caelan.Frameworks.BIZ.Classes;
 using Caelan.Frameworks.Common.Classes;
 using Caelan.FrameworksTest.Classes;
+using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest
 {
@@ -41,8 +43,9 @@ namespace Caelan.FrameworksTest
         {
             using (var uow = new TestUnitOfWork())
             {
-                foreach (var ur in dto.UserRoles)
-                    uow.UserRoles.Delete(ur);
+                //TODO: Fix
+                //foreach (var ur in dto.UserRoles)
+                //    GenericRepository.CreateGenericCRUDRepository<UserRole, UserRoleDTO, int>(uow).Delete(ur);
                 uow.Users.Delete(dto);
                 Console.WriteLine(uow.SaveChanges());
             }
