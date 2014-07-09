@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
-using AutoMapper;
+using Caelan.Frameworks.Common.Classes;
 using Caelan.FrameworksTest.Classes;
 
 namespace Caelan.FrameworksTest
@@ -52,12 +51,7 @@ namespace Caelan.FrameworksTest
         static void Main()
         {
             Console.WriteLine("C# Version");
-            var profileType = typeof(Profile);
-
-            var profiles = (from t in Assembly.GetExecutingAssembly().GetTypes()
-                            where profileType.IsAssignableFrom(t) && t.GetConstructor(Type.EmptyTypes) != null && !t.IsGenericType
-                            select (Profile)Activator.CreateInstance(t)).ToList();
-            Mapper.Initialize(a => profiles.ForEach(a.AddProfile));
+            BuilderConfiguration.Configure();
 
             var dto = new UserDTO
             {

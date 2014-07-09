@@ -2,7 +2,7 @@
 
 open System
 open System.Reflection
-open AutoMapper
+open Caelan.Frameworks.Common.Classes
 open Caelan.FrameworksTestsFS.Classes
 
 let insert dto = 
@@ -34,18 +34,7 @@ let delete (dto : UserDTO) =
 [<EntryPoint>]
 let main argv = 
     printfn "F# Version"
-    let profileType = typeof<Profile>
-    
-    let profiles = 
-        query { 
-            for t in Assembly.GetExecutingAssembly().GetTypes() do
-                where 
-                    (profileType.IsAssignableFrom(t) = true && t.GetConstructor(Type.EmptyTypes) <> null 
-                     && t.IsGenericType = false)
-                select (Activator.CreateInstance(t) :?> Profile)
-        }
-        |> List.ofSeq
-    Mapper.Initialize(fun a -> profiles |> List.iter (fun t -> a.AddProfile(t)))
+    BuilderConfiguration.Configure()
     let dto = 
         ref (UserDTO(Login = "test", Password = "test", 
                      UserRoles = [ UserRoleDTO(IDRole = 1)
