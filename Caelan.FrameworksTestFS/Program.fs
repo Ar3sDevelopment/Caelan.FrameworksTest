@@ -27,10 +27,9 @@ let update (dto : UserDTO ref) =
 
 let delete (dto : UserDTO) = 
     use uow = new TestUnitOfWork()
-    //TODO: Fix
-    //dto.UserRoles
-    //|> List.ofSeq
-    //|> List.iter (fun ur -> GenericRepository.CreateGenericCRUDRepository<UserRole, UserRoleDTO, int>(uow).Delete(ur))
+    dto.UserRoles
+    |> List.ofSeq
+    |> List.iter (fun ur -> uow.CRUDRepository<UserRole, UserRoleDTO, int>().Delete(ur))
     uow.Users.Delete(dto)
     uow.SaveChanges() |> printfn "%d"
 

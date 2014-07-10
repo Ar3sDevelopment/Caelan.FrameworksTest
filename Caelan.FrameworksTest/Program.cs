@@ -42,7 +42,6 @@ namespace Caelan.FrameworksTest
         {
             using (var uow = new TestUnitOfWork())
             {
-                //TODO: Fix
                 foreach (var ur in dto.UserRoles)
                     uow.CRUDRepository<UserRole, UserRoleDTO, int>().Delete(ur);
                 uow.Users.Delete(dto);

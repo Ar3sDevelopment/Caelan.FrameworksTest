@@ -61,13 +61,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.1.0.24511, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.1.1.41450, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.1.0\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.1.1\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.Common, Version=2.1.0.24324, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.Common, Version=2.1.1.41299, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.1.0\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.1.1\lib\Caelan.Frameworks.Common.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.Frameworks.DAL, Version=2.1.0.24059, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
