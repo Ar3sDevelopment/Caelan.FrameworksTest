@@ -61,17 +61,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.0.39.3111, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.1.0.24511, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.0.39-a\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.1.0\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.Common, Version=2.0.19.26226, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.Common, Version=2.1.0.24324, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.0.19-a\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.1.0\lib\Caelan.Frameworks.Common.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.DAL, Version=2.0.5.27459, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.DAL, Version=2.1.0.24059, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.DAL.2.0.5-a\lib\Caelan.Frameworks.DAL.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.DAL.2.1.0\lib\Caelan.Frameworks.DAL.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Caelan.Frameworks.BIZ.Classes;
 using Caelan.Frameworks.Common.Classes;
 using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models;
