@@ -8,9 +8,9 @@ open System.Linq
 type UserEntityBuilder() = 
     inherit BaseEntityBuilder<UserDTO, User>()
     override this.AfterBuild(source, destination) = 
-        base.AfterBuild(source, destination)
+        base.AfterBuild(source, &destination)
         if source.UserRoles <> null then 
-            (!destination).UserRoles <- GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>()
+            destination.UserRoles <- GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>()
                 .BuildList(source.UserRoles).ToList()
 namespace Caelan.FrameworksTestsFS.DTOBuilders
 
@@ -21,7 +21,7 @@ open Caelan.FrameworksTestsFS.Classes
 type UserDTOBuilder() = 
     inherit BaseDTOBuilder<User, UserDTO>()
     override this.BuildFull(source, destination) = 
-        base.BuildFull(source, destination)
+        base.BuildFull(source, &destination)
         if source.UserRoles <> null then 
-            (!destination).UserRoles <- GenericBusinessBuilder.GenericDTOBuilder<UserRole, UserRoleDTO>()
+            destination.UserRoles <- GenericBusinessBuilder.GenericDTOBuilder<UserRole, UserRoleDTO>()
                 .BuildList(source.UserRoles)
