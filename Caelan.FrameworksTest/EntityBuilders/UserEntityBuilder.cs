@@ -5,13 +5,15 @@ using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.EntityBuilders
 {
-    public class UserEntityBuilder : BaseEntityBuilder<UserDTO, User>
-    {
-        public override void AfterBuild(UserDTO source, ref User destination)
-        {
-            base.AfterBuild(source, ref destination);
+	public class UserEntityBuilder : BaseEntityBuilder<UserDTO, User>
+	{
+		public override User AfterBuild(UserDTO source, User destination)
+		{
+			destination = base.AfterBuild(source, destination);
 
-            destination.UserRoles = GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>().BuildList(source.UserRoles).ToList();
-        }
-    }
+			destination.UserRoles = GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>().BuildList(source.UserRoles).ToList();
+
+			return destination;
+		}
+	}
 }
