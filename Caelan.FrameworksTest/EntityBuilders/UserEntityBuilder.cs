@@ -2,18 +2,17 @@
 using Caelan.Frameworks.BIZ.Classes;
 using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models;
+using Microsoft.FSharp.Core;
 
 namespace Caelan.FrameworksTest.EntityBuilders
 {
 	public class UserEntityBuilder : BaseEntityBuilder<UserDTO, User>
 	{
-		public override User AfterBuild(UserDTO source, User destination)
+		public override void AfterBuild(UserDTO source, FSharpRef<User> destination)
 		{
-			destination = base.AfterBuild(source, destination);
+			base.AfterBuild(source, destination);
 
-			destination.UserRoles = GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>().BuildList(source.UserRoles).ToList();
-
-			return destination;
+			destination.Value.UserRoles = GenericBusinessBuilder.GenericEntityBuilder<UserRoleDTO, UserRole>().BuildList(source.UserRoles).ToList();
 		}
 	}
 }
