@@ -1,8 +1,6 @@
-using Caelan.Frameworks.BIZ.Interfaces;
-
 namespace Caelan.FrameworksTest.Classes
 {
-	public class UserRoleDTO : IDTO<int>
+	public class UserRoleDTO
 	{
 		public int ID { get; set; }
 		public int IDUser { get; set; }

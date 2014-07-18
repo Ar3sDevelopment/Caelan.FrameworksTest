@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
-using Caelan.Frameworks.BIZ.Interfaces;
 
 namespace Caelan.FrameworksTest.Classes
 {
-	public class UserDTO : IDTO<int>
+	public class UserDTO
 	{
 		public int ID { get; set; }
 

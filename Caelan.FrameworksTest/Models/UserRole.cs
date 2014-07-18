@@ -1,8 +1,6 @@
-using Caelan.Frameworks.DAL.Interfaces;
-
 namespace Caelan.FrameworksTest.Models
 {
-	public class UserRole : IEntity<int>
+	public class UserRole
 	{
 		public int ID { get; set; }
 		public int IDUser { get; set; }

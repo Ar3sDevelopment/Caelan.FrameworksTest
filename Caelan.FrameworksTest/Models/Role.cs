@@ -1,9 +1,8 @@
 using System.Collections.Generic;
-using Caelan.Frameworks.DAL.Interfaces;
 
 namespace Caelan.FrameworksTest.Models
 {
-    public class Role : IEntity<int>
+    public class Role
     {
         public Role()
         {

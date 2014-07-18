@@ -4,7 +4,7 @@ using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
 {
-	public class UserRepository : BaseCRUDRepository<User, UserDTO, int>
+	public class UserRepository : BaseCRUDRepository<User, UserDTO>
 	{
 		public UserRepository(BaseUnitOfWork manager)
 			: base(manager)

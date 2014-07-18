@@ -10,38 +10,23 @@ open Caelan.FrameworksTestsFS.Models
 type UserDTO() = 
     member val Login = "" with get, set
     member val Password = "" with get, set
-    member val ID = 0 with get, set
+    member val Id = 0 with get, set
     member val UserRoles : seq<UserRoleDTO> = null with get, set
-    interface IDTO<int> with
-        
-        member this.ID 
-            with get () = this.ID
-            and set (value) = this.ID <- value
-
+    
 and [<AllowNullLiteral>] RoleDTO() = 
-    member val ID = 0 with get, set
+    member val Id = 0 with get, set
     member val Description = "" with get, set
     member val UserRoles : seq<UserRoleDTO> = null with get, set
-    interface IDTO<int> with
-        
-        member this.ID 
-            with get () = this.ID
-            and set (value) = this.ID <- value
 
 and [<AllowNullLiteral>] UserRoleDTO() = 
-    member val ID = 0 with get, set
+    member val Id = 0 with get, set
     member val IDUser = 0 with get, set
     member val IDRole = 0 with get, set
     member val User : User = null with get, set
     member val Role : Role = null with get, set
-    interface IDTO<int> with
-        
-        member this.ID 
-            with get () = this.ID
-            and set (value) = this.ID <- value
 
 type UserRepository(manager) = 
-    inherit BaseCRUDRepository<User, UserDTO, int>(manager)
+    inherit BaseCRUDRepository<User, UserDTO>(manager)
     
     member this.GetUserByLogin(login, password) = 
         this.Single(fun t -> t.Login = login && t.Password = password)
