@@ -7,22 +7,22 @@ namespace Caelan.FrameworksTest.Models.Mapping
 		public UserRoleMap()
 		{
 			// Primary Key
-			HasKey(t => t.ID);
+			HasKey(t => t.Id);
 
 			// Properties
 			// Table & Column Mappings
 			ToTable("UserRole");
-			Property(t => t.ID).HasColumnName("Id");
-			Property(t => t.IDUser).HasColumnName("IdUser");
-			Property(t => t.IDRole).HasColumnName("IdRole");
+			Property(t => t.Id).HasColumnName("Id");
+			Property(t => t.IdUser).HasColumnName("IdUser");
+			Property(t => t.IdRole).HasColumnName("IdRole");
 
 			// Relationships
 			HasRequired(t => t.Role)
 				.WithMany(t => t.UserRoles)
-				.HasForeignKey(d => d.IDRole);
+				.HasForeignKey(d => d.IdRole);
 			HasRequired(t => t.User)
 				.WithMany(t => t.UserRoles)
-				.HasForeignKey(d => d.IDUser);
+				.HasForeignKey(d => d.IdUser);
 
 		}
 	}

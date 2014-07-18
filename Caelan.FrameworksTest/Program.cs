@@ -23,7 +23,7 @@ namespace Caelan.FrameworksTest
             using (var uow = new TestUnitOfWork())
             {
                 var users = uow.Users.List().ToList();
-                users.ForEach(user => Console.WriteLine("{0}: {1} [{2}]", user.ID, user.Login, string.Join(",", user.UserRoles.Where(t => t.Role != null).Select(t => t.Role.Description))));
+                users.ForEach(user => Console.WriteLine("{0}: {1} [{2}]", user.Id, user.Login, string.Join(",", user.UserRoles.Where(t => t.Role != null).Select(t => t.Role.Description))));
             }
         }
 
@@ -33,7 +33,7 @@ namespace Caelan.FrameworksTest
             {
                 dto = uow.Users.GetUserByLogin(dto.Login, dto.Password);
                 dto.Password = "test2";
-                uow.Users.Update(dto, dto.ID);
+                uow.Users.Update(dto, dto.Id);
                 Console.WriteLine(uow.SaveChanges());
             }
         }
@@ -43,8 +43,8 @@ namespace Caelan.FrameworksTest
             using (var uow = new TestUnitOfWork())
             {
                 foreach (var ur in dto.UserRoles)
-                    uow.CRUDRepository<UserRole, UserRoleDTO>().Delete(ur, ur.ID);
-                uow.Users.Delete(dto, dto.ID);
+                    uow.CRUDRepository<UserRole, UserRoleDTO>().Delete(ur, ur.Id);
+                uow.Users.Delete(dto, dto.Id);
                 Console.WriteLine(uow.SaveChanges());
             }
         }
@@ -62,11 +62,11 @@ namespace Caelan.FrameworksTest
                 {
                     new UserRoleDTO
                     {
-                        IDRole = 1
+                        IdRole = 1
                     },
                     new UserRoleDTO
                     {
-                        IDRole = 2
+                        IdRole = 2
                     }
                 }
             };
