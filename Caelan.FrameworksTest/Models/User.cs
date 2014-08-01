@@ -9,7 +9,7 @@ namespace Caelan.FrameworksTest.Models
             UserRoles = new List<UserRole>();
         }
 
-        public int ID { get; set; }
+        public int Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
         public virtual ICollection<UserRole> UserRoles { get; set; }
