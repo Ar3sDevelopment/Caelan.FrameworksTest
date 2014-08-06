@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Caelan.Frameworks.BIZ.Classes;
+using Caelan.Frameworks.Common.Extenders;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
@@ -13,10 +14,10 @@ namespace Caelan.FrameworksTest.Classes
 
 		public UserDTO GetUserByLogin(string login, string password)
 		{
-			return Single(t => t.Login == login && t.Password == password);
+			return Single(FunctionConverter.CreateFSharpFunc<User, bool>(t => t.Login == login && t.Password == password));
 		}
 
-		public override IEnumerable<UserDTO> List()
+		public IEnumerable<UserDTO> ListFull()
 		{
 			var users = All();
 

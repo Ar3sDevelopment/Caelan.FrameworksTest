@@ -29,9 +29,9 @@ type UserRepository(manager) =
     inherit BaseCRUDRepository<User, UserDTO>(manager)
     
     member this.GetUserByLogin(login, password) = 
-        this.Single(fun t -> t.Login = login && t.Password = password)
+        this.Single(fun (t : User) -> t.Login = login && t.Password = password)
     
-    override this.List() = this.DTOBuilder().BuildFullList(this.All())
+    member this.ListFull() = this.DTOBuilder().BuildFullList(this.All())
 
 type TestUnitOfWork() as this = 
     inherit BaseUnitOfWork<TestDbContext>()
