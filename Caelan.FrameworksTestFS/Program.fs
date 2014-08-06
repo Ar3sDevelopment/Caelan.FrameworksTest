@@ -14,7 +14,7 @@ let insert (dto : UserDTO) =
 
 let print() = 
     use uow = new TestUnitOfWork()
-    uow.Users.List()
+    uow.Users.ListFull()
     |> List.ofSeq
     |> List.iter (fun user -> 
            (user.Id, user.Login, 
