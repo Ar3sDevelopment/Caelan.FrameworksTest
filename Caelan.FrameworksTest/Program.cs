@@ -4,6 +4,7 @@ using System.Linq;
 using Caelan.Frameworks.Common.Classes;
 using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models;
+using Microsoft.FSharp.Core;
 
 namespace Caelan.FrameworksTest
 {

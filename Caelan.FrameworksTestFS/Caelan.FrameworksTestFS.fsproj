@@ -52,11 +52,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="Caelan.Frameworks.BIZ">
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-j\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-p\lib\Caelan.Frameworks.BIZ.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Caelan.Frameworks.Common">
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0-f\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0-l\lib\Caelan.Frameworks.Common.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework">

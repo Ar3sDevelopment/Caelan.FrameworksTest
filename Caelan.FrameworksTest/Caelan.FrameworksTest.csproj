@@ -60,13 +60,13 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Caelan.DynamicLinq.1.1.0\lib\Caelan.DynamicLinq.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.2.0.17485, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.2.0.21749, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-j\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-p\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
-    <Reference Include="Caelan.Frameworks.Common, Version=2.2.0.17313, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.Common, Version=2.2.0.22789, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0-f\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0-l\lib\Caelan.Frameworks.Common.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
