@@ -23,7 +23,7 @@ namespace Caelan.FrameworksTest
         {
             using (var uow = new TestUnitOfWork())
             {
-                var users = uow.Users.List().ToList();
+                var users = uow.Users.ListFull().ToList();
                 users.ForEach(user => Console.WriteLine("{0}: {1} [{2}]", user.Id, user.Login, string.Join(",", user.UserRoles.Where(t => t.Role != null).Select(t => t.Role.Description))));
             }
         }
