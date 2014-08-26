@@ -102,7 +102,7 @@ type TestDbContext() =
         with get () = this.userRoles
         and set value = this.userRoles <- value
     
-    override this.OnModelCreating(builder : DbModelBuilder) = 
+    override __.OnModelCreating(builder : DbModelBuilder) = 
         builder.Configurations.Add(UserMap()) |> ignore
         builder.Configurations.Add(RoleMap()) |> ignore
         builder.Configurations.Add(UserRoleMap()) |> ignore
