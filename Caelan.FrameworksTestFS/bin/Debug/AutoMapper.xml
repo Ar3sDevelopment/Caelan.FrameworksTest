@@ -1018,6 +1018,12 @@
             <param name="profileName">Name of the profile</param>
             <returns>Itself</returns>
         </member>
+        <member name="M:AutoMapper.IMappingExpression`2.ProjectUsing(System.Linq.Expressions.Expression{System.Func{`0,`1}})">
+            <summary>
+            Skip member mapping and use a custom expression during LINQ projection
+            </summary>
+            <param name="projectionExpression">Projection expression</param>
+        </member>
         <member name="M:AutoMapper.IMappingExpression`2.ConvertUsing(System.Func{`0,`1})">
             <summary>
             Skip member mapping and use a custom function to convert to the destination type
@@ -1067,6 +1073,13 @@
         <member name="M:AutoMapper.IMappingExpression`2.ConstructUsing(System.Func{`0,`1})">
             <summary>
             Supply a custom instantiation function for the destination type
+            </summary>
+            <param name="ctor">Callback to create the destination type given the source object</param>
+            <returns>Itself</returns>
+        </member>
+        <member name="M:AutoMapper.IMappingExpression`2.ConstructProjectionUsing(System.Linq.Expressions.Expression{System.Func{`0,`1}})">
+            <summary>
+            Supply a custom instantiation expression for the destination type for LINQ projection
             </summary>
             <param name="ctor">Callback to create the destination type given the source object</param>
             <returns>Itself</returns>
@@ -1127,6 +1140,11 @@
             <param name="substituteFunc">Substitution function</param>
             <returns>New source object to map.</returns>
         </member>
+        <member name="P:AutoMapper.IMappingExpression`2.TypeMap">
+            <summary>
+            The current TypeMap being configured
+            </summary>
+        </member>
         <member name="T:AutoMapper.IMemberConfigurationExpression">
             <summary>
             Configuration options for an individual member
@@ -1162,6 +1180,11 @@
         <member name="M:AutoMapper.IMemberConfigurationExpression.Ignore">
             <summary>
             Ignore this member for configuration validation and skip during mapping
+            </summary>
+        </member>
+        <member name="M:AutoMapper.IMemberConfigurationExpression.UseDestinationValue">
+            <summary>
+            Use the destination value instead of mapping from the source value or creating a new instance
             </summary>
         </member>
         <member name="T:AutoMapper.ISourceMemberConfigurationExpression">
@@ -1295,6 +1318,11 @@
             </summary>
             <param name="condition">Condition to evaluate using the current resolution context</param>
         </member>
+        <member name="M:AutoMapper.IMemberConfigurationExpression`1.ExplicitExpansion">
+            <summary>
+            Ignore this member for LINQ projections unless explicitly expanded during projection
+            </summary>
+        </member>
         <member name="T:AutoMapper.IResolutionExpression">
             <summary>
             Custom resolver options
@@ -1392,7 +1420,7 @@
             Avoid calling the <see cref="T:AutoMapper.Mapper"/> class from this method.
             </summary>
         </member>
-        <member name="M:AutoMapper.QueryableExtensions.Extensions.CreateMapExpression``2(AutoMapper.IMappingEngine)">
+        <member name="M:AutoMapper.QueryableExtensions.Extensions.CreateMapExpression``2(AutoMapper.IMappingEngine,System.String[])">
             <summary>
             Create an expression tree representing a mapping from the <typeparamref name="TSource"/> type to <typeparamref name="TDestination"/> type
             Includes flattening and expressions inside MapFrom member configuration
@@ -1400,11 +1428,12 @@
             <typeparam name="TSource">Source Type</typeparam>
             <typeparam name="TDestination">Destination Type</typeparam>
             <param name="mappingEngine">Mapping engine instance</param>
+            <param name="membersToExpand">Expand members explicitly previously marked as members to explicitly expand</param>
             <returns>Expression tree mapping source to destination type</returns>
         </member>
         <member name="M:AutoMapper.QueryableExtensions.Extensions.Project``1(System.Linq.IQueryable{``0})">
             <summary>
-            Extention method to project from a queryable using the static <see cref="P:AutoMapper.Mapper.Engine"/> property
+            Extention method to project from a queryable using the static <see cref="P:AutoMapper.Mapper.Engine"/> property.
             Due to generic parameter inference, you need to call Project().To to execute the map
             </summary>
             <remarks>Projections are only calculated once and cached</remarks>
@@ -1423,7 +1452,7 @@
             <param name="mappingEngine">Mapping engine instance</param>
             <returns>Expression to project into</returns>
         </member>
-        <member name="T:AutoMapper.QueryableExtensions.Extensions.ConversionVisitor">
+        <member name="T:AutoMapper.QueryableExtensions.Extensions.ParameterConversionVisitor">
             <summary>
             This expression visitor will replace an input parameter by another one
             
@@ -1440,6 +1469,22 @@
             Projects the source type to the destination type given the mapping configuration
             </summary>
             <typeparam name="TResult">Destination type to map to</typeparam>
+            <returns>Queryable result, use queryable extension methods to project and execute result</returns>
+        </member>
+        <member name="M:AutoMapper.QueryableExtensions.IProjectionExpression.To``1(System.String[])">
+            <summary>
+            Projects the source type to the destination type given the mapping configuration
+            </summary>
+            <typeparam name="TResult">Destination type to map to</typeparam>
+            <param name="membersToExpand">Explicit members to expand</param>
+            <returns>Queryable result, use queryable extension methods to project and execute result</returns>
+        </member>
+        <member name="M:AutoMapper.QueryableExtensions.IProjectionExpression.To``1(System.Linq.Expressions.Expression{System.Func{``0,System.Object}}[])">
+            <summary>
+            Projects the source type to the destination type given the mapping configuration
+            </summary>
+            <typeparam name="TResult">Destination type to map to</typeparam>
+            <param name="membersToExpand">>Explicit members to expand</param>
             <returns>Queryable result, use queryable extension methods to project and execute result</returns>
         </member>
         <member name="T:AutoMapper.ResolutionContext">

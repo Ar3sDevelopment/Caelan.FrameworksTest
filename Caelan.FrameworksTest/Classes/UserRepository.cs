@@ -1,11 +1,10 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Caelan.Frameworks.BIZ.Classes;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
 {
-    public class UserRepository : BaseCRUDRepository<User, UserDTO, int>
+    public class UserRepository : BaseCRUDRepository<User, UserDTO>
     {
         public UserRepository(BaseUnitOfWork manager)
             : base(manager)
@@ -17,7 +16,7 @@ namespace Caelan.FrameworksTest.Classes
             return Single(t => t.Login == login && t.Password == password);
         }
 
-        public override IEnumerable<UserDTO> List()
+        public IEnumerable<UserDTO> ListFull()
         {
             var users = All();
 
