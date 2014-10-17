@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using Caelan.Frameworks.BIZ.Classes;
+using Caelan.Frameworks.BIZ.Interfaces;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.Classes
 {
-    public class UserRepository : BaseCRUDRepository<User, UserDTO>
+    public class UserRepository : Repository<User, UserDTO>
     {
-        public UserRepository(BaseUnitOfWork manager)
+        public UserRepository(IUnitOfWork manager)
             : base(manager)
         {
         }

@@ -1,8 +1,5 @@
 ﻿namespace Caelan.FrameworksTestsFS.Classes
 
-open System.Data.Entity
-open System.Linq
-open Caelan.Frameworks.BIZ.Interfaces
 open Caelan.Frameworks.BIZ.Classes
 open Caelan.FrameworksTestsFS.Models
 
@@ -26,13 +23,9 @@ and [<AllowNullLiteral>] UserRoleDTO() =
     member val Role : Role = null with get, set
 
 type UserRepository(manager) = 
-    inherit BaseCRUDRepository<User, UserDTO>(manager)
+    inherit Repository<User, UserDTO>(manager)
     
     member this.GetUserByLogin(login, password) = 
         this.Single(fun (t : User) -> t.Login = login && t.Password = password)
     
     member this.ListFull() = this.DTOBuilder().BuildFullList(this.All())
-
-type TestUnitOfWork() as this = 
-    inherit BaseUnitOfWork<TestDbContext>()
-    member val Users = UserRepository(this) with get, set
