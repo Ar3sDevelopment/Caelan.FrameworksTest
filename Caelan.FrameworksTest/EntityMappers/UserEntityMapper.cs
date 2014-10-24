@@ -6,7 +6,7 @@ using Microsoft.FSharp.Core;
 
 namespace Caelan.FrameworksTest.EntityMappers
 {
-	public class UserEntityBuilder : IMapper<UserDTO, User>
+	public class UserEntityMapper : IMapper<UserDTO, User>
 	{
 		public User Map(UserDTO source)
 		{

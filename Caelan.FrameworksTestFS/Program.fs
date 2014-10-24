@@ -13,7 +13,7 @@ let insert (dto : UserDTO) =
 
 let print() = 
     use uow = new UnitOfWork<TestDbContext>()
-    uow.Repository<UserRepository>().ListFull()
+    uow.Repository<UserRepository>().List()
     |> List.ofSeq
     |> List.iter (fun user -> 
            (user.Id, user.Login, 
@@ -41,7 +41,6 @@ let delete (dto : UserDTO) =
 [<EntryPoint>]
 let main _ = 
     printfn "F# Version"
-    BuilderConfiguration.Configure()
     let dto = 
         ref (UserDTO(Login = "test", Password = "test", 
                      UserRoles = [ UserRoleDTO(IDRole = 1)
