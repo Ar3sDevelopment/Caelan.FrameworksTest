@@ -10,6 +10,6 @@ namespace Caelan.FrameworksTest.Classes
 
 		public string Password { get; set; }
 
-		public virtual IEnumerable<UserRoleDTO> UserRoles { get; set; }
+		public IEnumerable<UserRoleDTO> UserRoles { get; set; }
 	}
 }
