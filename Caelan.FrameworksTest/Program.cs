@@ -63,7 +63,7 @@ namespace Caelan.FrameworksTest
 			{
 				foreach (var ur in dto.UserRoles)
 				{
-					uow.Repository<UserRole, UserRoleDTO>().Delete(ur, ur.Id);
+					uow.Repository<UserRole, UserRoleDTO>().Delete(ur, (new List<object> { ur.Id }).ToArray());
 				}
 				uow.Repository<UserRepository>().Delete(dto, dto.Id);
 				Console.WriteLine(uow.SaveChanges());
@@ -73,7 +73,6 @@ namespace Caelan.FrameworksTest
 		static void Main()
 		{
 			Console.WriteLine("C# Version");
-			BuilderConfiguration.Configure();
 
 			var dto = new UserDTO
 			{

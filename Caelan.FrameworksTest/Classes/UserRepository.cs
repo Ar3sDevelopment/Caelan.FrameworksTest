@@ -21,7 +21,7 @@ namespace Caelan.FrameworksTest.Classes
         {
             var users = All();
 
-            return DTOBuilder().BuildFullList(users);
+            return DTOBuilder().BuildList(users);
         }
     }
 }
