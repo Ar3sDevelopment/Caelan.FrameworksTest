@@ -6,31 +6,33 @@ using Microsoft.FSharp.Core;
 
 namespace Caelan.FrameworksTest.EntityMappers
 {
-	public class UserEntityMapper : IMapper<UserDTO, User>
-	{
-		public User Map(UserDTO source)
-		{
-			var dest = new User();
-			var destRef = new FSharpRef<User>(dest);
+    public class UserEntityMapper : IMapper<UserDTO, User>
+    {
+        public User Map(UserDTO source)
+        {
+            var dest = new User();
+            var destRef = new FSharpRef<User>(dest);
 
-			Map(source, destRef);
+            Map(source, destRef);
 
-			return destRef.Value;
-		}
+            return destRef.Value;
+        }
 
-		public void Map(UserDTO source, FSharpRef<User> destination)
-		{
-			destination.Value.Id = source.Id;
-			destination.Value.Login = source.Login;
-			destination.Value.Password = source.Password;
+        public void Map(UserDTO source, FSharpRef<User> destination)
+        {
+            destination.Value.Id = source.Id;
+            destination.Value.Login = source.Login;
+            destination.Value.Password = source.Password;
 
-			if (source.UserRoles != null)
-			{
-				destination.Value.UserRoles = source.UserRoles.Select(t => new UserRole
-				{
-					IdRole = t.IdRole
-				}).ToList();
-			}
-		}
-	}
+            if (source.UserRoles != null)
+            {
+                destination.Value.UserRoles = source.UserRoles.Select(t => new UserRole
+                {
+                    Id = t.Id,
+                    IdUser = t.IdUser,
+                    IdRole = t.IdRole
+                }).ToList();
+            }
+        }
+    }
 }
