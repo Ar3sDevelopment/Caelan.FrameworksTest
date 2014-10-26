@@ -20,6 +20,9 @@ namespace Caelan.FrameworksTest.EntityMappers
 
         public void Map(UserDTO source, FSharpRef<User> destination)
         {
+			if (destination.Value == null)
+				destination.Value = new User();
+
             destination.Value.Id = source.Id;
             destination.Value.Login = source.Login;
             destination.Value.Password = source.Password;
