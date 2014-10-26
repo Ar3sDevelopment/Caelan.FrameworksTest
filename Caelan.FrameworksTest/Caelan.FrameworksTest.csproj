@@ -48,9 +48,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caelan.Frameworks.BIZ, Version=2.2.0.38201, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.2.0.41870, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-zc\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-zd\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>

@@ -61,10 +61,10 @@ namespace Caelan.FrameworksTest
 		{
 			UnitOfWorkAction(uow =>
 			{
-				foreach (var ur in dto.UserRoles)
-				{
-					uow.Repository<UserRole, UserRoleDTO>().Delete(ur, (new List<object> { ur.Id }).ToArray());
-				}
+                //foreach (var ur in dto.UserRoles)
+                //{
+                //    uow.Repository<UserRole, UserRoleDTO>().Delete(ur, (new List<object> { ur.Id }).ToArray());
+                //}
 				uow.Repository<UserRepository>().Delete(dto, dto.Id);
 				Console.WriteLine(uow.SaveChanges());
 			});
