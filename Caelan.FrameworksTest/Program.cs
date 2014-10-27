@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Caelan.Frameworks.BIZ.Classes;
-using Caelan.Frameworks.Common.Classes;
 using Caelan.FrameworksTest.Classes;
 using Caelan.FrameworksTest.Models;
 
@@ -30,7 +29,7 @@ namespace Caelan.FrameworksTest
 		{
 			UnitOfWorkAction(uow =>
 			{
-				uow.Repository<UserRepository>().Insert(dto);
+				uow.Repository<User, UserDTO>().Insert(dto);
 				Console.WriteLine(uow.SaveChanges());
 			});
 		}
@@ -39,7 +38,7 @@ namespace Caelan.FrameworksTest
 		{
 			UnitOfWorkAction(uow =>
 			{
-				var users = uow.Repository<UserRepository>().ListFull().ToList();
+				var users = uow.Repository<User, UserDTO>().List().ToList();
 				users.ForEach(user => Console.WriteLine("{0}: {1} [{2}]", user.Id, user.Login, string.Join(",", user.UserRoles.Where(t => t.Role != null).Select(t => t.Role.Description))));
 			});
 		}
@@ -63,9 +62,9 @@ namespace Caelan.FrameworksTest
 			{
 				foreach (var ur in dto.UserRoles)
 				{
-					uow.Repository<UserRole, UserRoleDTO>().Delete(ur, (new List<object> { ur.Id }).ToArray());
+					uow.Repository<UserRole, UserRoleDTO>().Delete(ur, ur.Id);
 				}
-				uow.Repository<UserRepository>().Delete(dto, dto.Id);
+				uow.Repository<User, UserDTO>().Delete(dto, dto.Id);
 				Console.WriteLine(uow.SaveChanges());
 			});
 		}
