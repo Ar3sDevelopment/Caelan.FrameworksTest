@@ -39,7 +39,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Caelan.Frameworks.BIZ">
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-zd\lib\Caelan.Frameworks.BIZ.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-zg\lib\Caelan.Frameworks.BIZ.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
