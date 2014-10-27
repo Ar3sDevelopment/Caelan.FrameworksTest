@@ -8,12 +8,12 @@ open Caelan.FrameworksTestsFS.Classes
 
 let insert (dto : UserDTO) = 
     use uow = new UnitOfWork<TestDbContext>()
-    uow.Repository<UserRepository>().Insert(dto)
+    uow.Repository<User, UserDTO>().Insert(dto)
     uow.SaveChanges() |> printfn "%d"
 
 let print() = 
     use uow = new UnitOfWork<TestDbContext>()
-    uow.Repository<UserRepository>().ListFull()
+    uow.Repository<User, UserDTO>().List()
     |> List.ofSeq
     |> List.iter (fun user -> 
            (user.Id, user.Login, 
@@ -27,7 +27,7 @@ let update (dto : UserDTO ref) =
     use uow = new UnitOfWork<TestDbContext>()
     dto := uow.Repository<UserRepository>().GetUserByLogin((!dto).Login, (!dto).Password)
     (!dto).Password <- "test2"
-    uow.Repository<UserRepository>().Update(!dto, [| box (!dto).Id |])
+    uow.Repository<User, UserDTO>().Update(!dto, [| box (!dto).Id |])
     uow.SaveChanges() |> printfn "%d"
 
 let delete (dto : UserDTO) = 
@@ -35,13 +35,12 @@ let delete (dto : UserDTO) =
     dto.UserRoles
     |> List.ofSeq
     |> List.iter (fun ur -> uow.Repository<UserRole, UserRoleDTO>().Delete(ur, [| box ur.Id |]))
-    uow.Repository<UserRepository>().Delete(dto, [| box dto.Id |])
+    uow.Repository<User, UserDTO>().Delete(dto, [| box dto.Id |])
     uow.SaveChanges() |> printfn "%d"
 
 [<EntryPoint>]
 let main _ = 
     printfn "F# Version"
-    BuilderConfiguration.Configure()
     let dto = 
         ref (UserDTO(Login = "test", Password = "test", 
                      UserRoles = [ UserRoleDTO(IDRole = 1)

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -48,17 +48,13 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Caelan.DynamicLinq, Version=1.1.0.23221, Culture=neutral, processorArchitecture=MSIL">
+    <Reference Include="Caelan.Frameworks.BIZ, Version=2.2.0.25746, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.DynamicLinq.1.2.0\lib\Caelan.DynamicLinq.dll</HintPath>
-    </Reference>
-    <Reference Include="Caelan.Frameworks.BIZ">
-      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0-za\lib\Caelan.Frameworks.BIZ.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>..\packages\Caelan.Frameworks.BIZ.2.2.0\lib\Caelan.Frameworks.BIZ.dll</HintPath>
     </Reference>
     <Reference Include="Caelan.Frameworks.Common, Version=2.2.0.37350, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0-w\lib\Caelan.Frameworks.Common.dll</HintPath>
+      <HintPath>..\packages\Caelan.Frameworks.Common.2.2.0\lib\Caelan.Frameworks.Common.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.1\lib\net45\EntityFramework.dll</HintPath>
@@ -75,6 +71,9 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Caelan.DynamicLinq">
+      <HintPath>..\packages\Caelan.DynamicLinq.1.2.0\lib\Caelan.DynamicLinq.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\RoleDTO.cs" />
@@ -82,7 +81,6 @@
     <Compile Include="Classes\UserRepository.cs" />
     <Compile Include="Classes\UserRoleDTO.cs" />
     <Compile Include="DTOMappers\UserDTOMapper.cs" />
-    <Compile Include="EntityMappers\UserEntityBuilder.cs" />
     <Compile Include="Models\Mapping\RoleMap.cs" />
     <Compile Include="Models\Mapping\UserMap.cs" />
     <Compile Include="Models\Mapping\UserRoleMap.cs" />
@@ -92,12 +90,15 @@
     <Compile Include="Models\UserRole.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="EntityMappers\UserEntityMapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
