@@ -26,4 +26,4 @@ type UserRepository(manager) =
     inherit Repository<User, UserDTO>(manager)
     
     member this.GetUserByLogin(login, password) = 
-        this.Single(fun (t : User) -> t.Login = login && t.Password = password)
+        this.SingleDTO(fun (t : User) -> t.Login = login && t.Password = password)
