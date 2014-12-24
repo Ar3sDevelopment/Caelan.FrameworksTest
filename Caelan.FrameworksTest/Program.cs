@@ -12,6 +12,32 @@ namespace Caelan.FrameworksTest
 	{
 		private static readonly UnitOfWorkCaller<TestDbContext> UowCaller = UnitOfWorkCaller.Context<TestDbContext>();
 
+		static void Main()
+		{
+			Console.WriteLine("C# Version");
+
+			var dto = new UserDTO
+			{
+				Login = "test",
+				Password = "test",
+				UserRoles = new List<UserRoleDTO>
+				{
+					new UserRoleDTO { IdRole = 1 },
+					new UserRoleDTO { IdRole = 2 }
+				}
+			};
+
+			Insert(dto);
+
+			Print();
+
+			dto = Update(dto);
+
+			Delete(dto);
+
+			Console.ReadLine();
+		}
+
 		static void Insert(UserDTO dto)
 		{
 			var res = UowCaller.UnitOfWorkCallSaveChanges(uow =>
@@ -55,32 +81,6 @@ namespace Caelan.FrameworksTest
 			});
 
 			Console.WriteLine(res ? "Update ok" : "Update failed");
-		}
-
-		static void Main()
-		{
-			Console.WriteLine("C# Version");
-
-			var dto = new UserDTO
-			{
-				Login = "test",
-				Password = "test",
-				UserRoles = new List<UserRoleDTO>
-				{
-					new UserRoleDTO { IdRole = 1 },
-					new UserRoleDTO { IdRole = 2 }
-				}
-			};
-
-			Insert(dto);
-
-			Print();
-
-			dto = Update(dto);
-
-			Delete(dto);
-
-			Console.ReadLine();
 		}
 	}
 }
