@@ -1,8 +1,9 @@
 ﻿using Caelan.Frameworks.BIZ.Classes;
 using Caelan.Frameworks.BIZ.Interfaces;
+using Caelan.FrameworksTest.DTO;
 using Caelan.FrameworksTest.Models;
 
-namespace Caelan.FrameworksTest.Classes
+namespace Caelan.FrameworksTest.Repositories
 {
 	public class UserRepository : Repository<User, UserDTO>
 	{

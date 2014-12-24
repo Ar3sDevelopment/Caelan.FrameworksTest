@@ -1,4 +1,4 @@
-namespace Caelan.FrameworksTest.Classes
+namespace Caelan.FrameworksTest.DTO
 {
 	public class UserRoleDTO
 	{

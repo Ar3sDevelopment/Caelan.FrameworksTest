@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Caelan.Frameworks.Common.Classes;
-using Caelan.FrameworksTest.Classes;
+using Caelan.FrameworksTest.DTO;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.DTOMappers

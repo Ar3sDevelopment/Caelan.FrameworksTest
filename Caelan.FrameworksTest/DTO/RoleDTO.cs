@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace Caelan.FrameworksTest.Classes
+namespace Caelan.FrameworksTest.DTO
 {
 	public class RoleDTO
 	{
