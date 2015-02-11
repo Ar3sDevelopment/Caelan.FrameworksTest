@@ -15,7 +15,7 @@ namespace Caelan.FrameworksTest.DTOMappers
 
 			if (source.UserRoles != null)
 			{
-				destination.UserRoles = source.UserRoles.Select(t => new UserRoleDTO
+				destination.UserRoles = source.UserRoles.ToList().Select(t => new UserRoleDTO
 				{
 					Id = t.Id,
 					IdUser = t.IdUser,

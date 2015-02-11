@@ -10,8 +10,6 @@ namespace Caelan.FrameworksTest
 {
 	class Program
 	{
-		private static readonly UnitOfWorkCaller<TestDbContext> UowCaller = UnitOfWorkCaller.Context<TestDbContext>();
-
 		static void Main()
 		{
 			Console.WriteLine("C# Version");
@@ -40,7 +38,7 @@ namespace Caelan.FrameworksTest
 
 		static void Insert(UserDTO dto)
 		{
-			var res = UowCaller.UnitOfWorkCallSaveChanges(uow =>
+			var res = UnitOfWorkCaller.Context<TestDbContext>().UnitOfWorkCallSaveChanges(uow =>
 			{
 				uow.Repository<User, UserDTO>().Insert(dto);
 			});
@@ -49,7 +47,7 @@ namespace Caelan.FrameworksTest
 
 		static void Print()
 		{
-			UowCaller.UnitOfWork(uow =>
+			UnitOfWorkCaller.Context<TestDbContext>().UnitOfWork(uow =>
 			{
 				uow.Repository<User, UserDTO>().List().ToList().ForEach(user => Console.WriteLine("{0}: {1} [{2}]", user.Id, user.Login, string.Join(",", user.UserRoles.Where(t => t.Role != null).Select(t => t.Role.Description))));
 			});
@@ -57,11 +55,11 @@ namespace Caelan.FrameworksTest
 
 		static UserDTO Update(UserDTO dto)
 		{
-			var res = UowCaller.UnitOfWorkCallSaveChanges(uow =>
+			var res = UnitOfWorkCaller.Context<TestDbContext>().UnitOfWorkCallSaveChanges(uow =>
 			{
-				dto = uow.Repository<UserRepository>().GetUserByLogin(dto.Login, dto.Password);
+				dto = uow.CustomRepository<UserRepository>().GetUserByLogin(dto.Login, dto.Password);
 				dto.Password = "test2";
-				uow.Repository<UserRepository>().Update(dto, dto.Id);
+				uow.CustomRepository<UserRepository>().Update(dto, dto.Id);
 			});
 
 			Console.WriteLine(res ? "Update ok" : "Update failed");
@@ -71,7 +69,7 @@ namespace Caelan.FrameworksTest
 
 		static void Delete(UserDTO dto)
 		{
-			var res = UowCaller.TransactionSaveChanges(uow =>
+			var res = UnitOfWorkCaller.Context<TestDbContext>().TransactionSaveChanges(uow =>
 			{
 				foreach (var ur in dto.UserRoles)
 				{
@@ -80,7 +78,7 @@ namespace Caelan.FrameworksTest
 				uow.Repository<User, UserDTO>().Delete(dto, dto.Id);
 			});
 
-			Console.WriteLine(res ? "Update ok" : "Update failed");
+			Console.WriteLine(res ? "Delete ok" : "Delete failed");
 		}
 	}
 }
