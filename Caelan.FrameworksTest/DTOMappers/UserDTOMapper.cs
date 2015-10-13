@@ -1,6 +1,6 @@
 ﻿using System.Linq;
 using Caelan.Frameworks.Common.Classes;
-using Caelan.FrameworksTest.Classes;
+using Caelan.FrameworksTest.DTO;
 using Caelan.FrameworksTest.Models;
 
 namespace Caelan.FrameworksTest.DTOMappers
@@ -15,7 +15,7 @@ namespace Caelan.FrameworksTest.DTOMappers
 
 			if (source.UserRoles != null)
 			{
-				destination.UserRoles = source.UserRoles.Select(t => new UserRoleDTO
+				destination.UserRoles = source.UserRoles.ToList().Select(t => new UserRoleDTO
 				{
 					Id = t.Id,
 					IdUser = t.IdUser,
